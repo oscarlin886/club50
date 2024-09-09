@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Comment!
+{% endblock %}
+
+{% block main %}
+<!--add a comment-->
+    <form action="/comments" method="post">
+        <div class = "mb-3">
+            <textarea rows = "4" cols = "50" id = "comment" name = "comment" placeholder="Enter Comment to Admins Here!" type="text"></textarea>
+        </div>
+        <div class = "mb-3">
+            <input class="form-control mx-auto w-auto" id = "email" name = "email" placeholder="Enter Email for Contact" type="email"></input>
+        </div>
+        <button class="btn btn-outline-success" type="submit">Post Comment</button>
+    </form>
+{% endblock %}
+{% block comm %}
+<!--set up comment viewing section-->
+    <div class="container">
+        <div class="row ">
+            <h3 class ="container-fluid py-5 text-center">All Comments</h3>
+        </div>
+    </div>
+    <div class="container mt-1 d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <ul class="list-unstyled">
+                        {% for comment in comments %}
+                        <!--each comment from https://bbbootstrap.com/snippets/bootstrap-comment-template-profile-images-52602180-->
+                        <li class="media"> <span class="round pt-2"><img id="pfp" src="https://img.icons8.com/bubbles/100/000000/groups.png" class="align-self-start mr-3"></span>
+                            <div class="media-body">
+                                <div class="row d-flex">
+                                    <h6 class="user pt-2">{{ comment['clubname'] }}</h6>
+                                    <div class="ml-auto">
+                                        <p class="text">{{ comment['time'] }} <a href = "mailto: {{ comment['email'] }}">{{ comment['email'] }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="commentcontent">
+                                    <p id="text">{{ comment['comment'] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

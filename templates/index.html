@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<!--protfolio of requests made by one user-->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Date of Request</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Request Amount</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- iterate through the components and color the corresponding row accordingly in the table -->
+        {% for folio in portfolio %}
+            {% if folio['status'] == "Approved" %}
+                <tr class="table-success">
+            {% elif folio['status'] == "Denied" %}
+                <tr class="table-danger">
+            {% endif %}
+                    <td>{{ folio['date'] }}</td>
+                    <td>{{ folio['requestreason'] }}</td>
+                    <td>{{ folio['moneyrequested'] | usd }}</td>
+                    <td>{{ folio['status'] }}</td>
+                </tr>
+        {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <th scope="row">Total Granted</th>
+                <td>{{ granttotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Request Funds
+{% endblock %}
+
+{% block main %}
+    <form action="/request" method="post">
+        <div class = "mb-3">
+            <textarea rows = "4" cols = "50" id = "reason" name = "reason" placeholder="Enter Request Reason Here" type="text"></textarea>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="amount" name="amount" placeholder="Amount" type="number">
+        </div>
+        <button class="btn btn-outline-success" type="submit">Submit Funding Request</button>
+    </form>
+{% endblock %}

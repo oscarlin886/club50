@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Profile
+{% endblock %}
+
+{% block main %}
+    <form action="/profile" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="newclubname" name="newclubname" placeholder="New Club/Display Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Club Name" type="text">
+        </div>
+        <button class="btn btn-outline-success" type="submit">Update Club Name</button>
+    </form>
+{% endblock %}
